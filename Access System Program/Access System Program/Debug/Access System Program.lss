@@ -1,0 +1,348 @@
+
+Access System Program.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000220  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  00000220  000002b4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800064  00800064  000002b8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002b8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002e8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000060  00000000  00000000  00000324  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000008d5  00000000  00000000  00000384  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000699  00000000  00000000  00000c59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000048b  00000000  00000000  000012f2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000094  00000000  00000000  00001780  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000045a  00000000  00000000  00001814  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000020a  00000000  00000000  00001c6e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000040  00000000  00000000  00001e78  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e2       	ldi	r30, 0x20	; 32
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a4 36       	cpi	r26, 0x64	; 100
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a4 e6       	ldi	r26, 0x64	; 100
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a9 36       	cpi	r26, 0x69	; 105
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 b4 00 	call	0x168	; 0x168 <main>
+  8a:	0c 94 0e 01 	jmp	0x21c	; 0x21c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <Init_Access_System>:
+  92:	8f ef       	ldi	r24, 0xFF	; 255
+  94:	8a bb       	out	0x1a, r24	; 26
+  96:	87 b3       	in	r24, 0x17	; 23
+  98:	8f 70       	andi	r24, 0x0F	; 15
+  9a:	87 bb       	out	0x17, r24	; 23
+  9c:	88 b3       	in	r24, 0x18	; 24
+  9e:	8f 60       	ori	r24, 0x0F	; 15
+  a0:	88 bb       	out	0x18, r24	; 24
+  a2:	8f e0       	ldi	r24, 0x0F	; 15
+  a4:	84 bb       	out	0x14, r24	; 20
+  a6:	83 e0       	ldi	r24, 0x03	; 3
+  a8:	81 bb       	out	0x11, r24	; 17
+  aa:	08 95       	ret
+
+000000ac <light_Output_LEDs>:
+  ac:	fc 01       	movw	r30, r24
+  ae:	80 81       	ld	r24, Z
+  b0:	81 30       	cpi	r24, 0x01	; 1
+  b2:	19 f4       	brne	.+6      	; 0xba <light_Output_LEDs+0xe>
+  b4:	85 b3       	in	r24, 0x15	; 21
+  b6:	81 60       	ori	r24, 0x01	; 1
+  b8:	85 bb       	out	0x15, r24	; 21
+  ba:	81 81       	ldd	r24, Z+1	; 0x01
+  bc:	82 30       	cpi	r24, 0x02	; 2
+  be:	19 f4       	brne	.+6      	; 0xc6 <light_Output_LEDs+0x1a>
+  c0:	85 b3       	in	r24, 0x15	; 21
+  c2:	82 60       	ori	r24, 0x02	; 2
+  c4:	85 bb       	out	0x15, r24	; 21
+  c6:	82 81       	ldd	r24, Z+2	; 0x02
+  c8:	83 30       	cpi	r24, 0x03	; 3
+  ca:	19 f4       	brne	.+6      	; 0xd2 <light_Output_LEDs+0x26>
+  cc:	85 b3       	in	r24, 0x15	; 21
+  ce:	84 60       	ori	r24, 0x04	; 4
+  d0:	85 bb       	out	0x15, r24	; 21
+  d2:	83 81       	ldd	r24, Z+3	; 0x03
+  d4:	84 30       	cpi	r24, 0x04	; 4
+  d6:	19 f4       	brne	.+6      	; 0xde <light_Output_LEDs+0x32>
+  d8:	85 b3       	in	r24, 0x15	; 21
+  da:	88 60       	ori	r24, 0x08	; 8
+  dc:	85 bb       	out	0x15, r24	; 21
+  de:	08 95       	ret
+
+000000e0 <light_BiColor_LED>:
+  e0:	88 23       	and	r24, r24
+  e2:	21 f0       	breq	.+8      	; 0xec <light_BiColor_LED+0xc>
+  e4:	82 b3       	in	r24, 0x12	; 18
+  e6:	82 60       	ori	r24, 0x02	; 2
+  e8:	82 bb       	out	0x12, r24	; 18
+  ea:	08 95       	ret
+  ec:	92 b3       	in	r25, 0x12	; 18
+  ee:	81 e0       	ldi	r24, 0x01	; 1
+  f0:	89 27       	eor	r24, r25
+  f2:	81 70       	andi	r24, 0x01	; 1
+  f4:	82 bb       	out	0x12, r24	; 18
+  f6:	08 95       	ret
+
+000000f8 <read_entered_pw>:
+  f8:	86 b3       	in	r24, 0x16	; 22
+  fa:	8e 30       	cpi	r24, 0x0E	; 14
+  fc:	59 f0       	breq	.+22     	; 0x114 <read_entered_pw+0x1c>
+  fe:	86 b3       	in	r24, 0x16	; 22
+ 100:	8d 30       	cpi	r24, 0x0D	; 13
+ 102:	51 f0       	breq	.+20     	; 0x118 <read_entered_pw+0x20>
+ 104:	86 b3       	in	r24, 0x16	; 22
+ 106:	8b 30       	cpi	r24, 0x0B	; 11
+ 108:	49 f0       	breq	.+18     	; 0x11c <read_entered_pw+0x24>
+ 10a:	86 b3       	in	r24, 0x16	; 22
+ 10c:	87 30       	cpi	r24, 0x07	; 7
+ 10e:	41 f4       	brne	.+16     	; 0x120 <read_entered_pw+0x28>
+ 110:	84 e0       	ldi	r24, 0x04	; 4
+ 112:	08 95       	ret
+ 114:	81 e0       	ldi	r24, 0x01	; 1
+ 116:	08 95       	ret
+ 118:	82 e0       	ldi	r24, 0x02	; 2
+ 11a:	08 95       	ret
+ 11c:	83 e0       	ldi	r24, 0x03	; 3
+ 11e:	08 95       	ret
+ 120:	80 e0       	ldi	r24, 0x00	; 0
+ 122:	08 95       	ret
+
+00000124 <check_entered_pw>:
+ 124:	fc 01       	movw	r30, r24
+ 126:	30 81       	ld	r19, Z
+ 128:	fb 01       	movw	r30, r22
+ 12a:	20 81       	ld	r18, Z
+ 12c:	32 13       	cpse	r19, r18
+ 12e:	14 c0       	rjmp	.+40     	; 0x158 <check_entered_pw+0x34>
+ 130:	fc 01       	movw	r30, r24
+ 132:	31 81       	ldd	r19, Z+1	; 0x01
+ 134:	fb 01       	movw	r30, r22
+ 136:	21 81       	ldd	r18, Z+1	; 0x01
+ 138:	32 13       	cpse	r19, r18
+ 13a:	10 c0       	rjmp	.+32     	; 0x15c <check_entered_pw+0x38>
+ 13c:	fc 01       	movw	r30, r24
+ 13e:	32 81       	ldd	r19, Z+2	; 0x02
+ 140:	fb 01       	movw	r30, r22
+ 142:	22 81       	ldd	r18, Z+2	; 0x02
+ 144:	32 13       	cpse	r19, r18
+ 146:	0c c0       	rjmp	.+24     	; 0x160 <check_entered_pw+0x3c>
+ 148:	fc 01       	movw	r30, r24
+ 14a:	93 81       	ldd	r25, Z+3	; 0x03
+ 14c:	fb 01       	movw	r30, r22
+ 14e:	83 81       	ldd	r24, Z+3	; 0x03
+ 150:	98 17       	cp	r25, r24
+ 152:	41 f0       	breq	.+16     	; 0x164 <check_entered_pw+0x40>
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+ 156:	08 95       	ret
+ 158:	80 e0       	ldi	r24, 0x00	; 0
+ 15a:	08 95       	ret
+ 15c:	80 e0       	ldi	r24, 0x00	; 0
+ 15e:	08 95       	ret
+ 160:	80 e0       	ldi	r24, 0x00	; 0
+ 162:	08 95       	ret
+ 164:	81 e0       	ldi	r24, 0x01	; 1
+ 166:	08 95       	ret
+
+00000168 <main>:
+unsigned char pw_char_index;				// variable to store the index value of the PASSWORD array and entered_pw array
+
+	
+	
+int main(void)
+{
+ 168:	cf 93       	push	r28
+ 16a:	df 93       	push	r29
+	/*	Initialize the access system program */
+    Init_Access_System();
+ 16c:	0e 94 49 00 	call	0x92	; 0x92 <Init_Access_System>
+	/*
+		While loop to 'read' sequence of PB presses and store the sequence in an array as 
+		defined by the function read_entered_pw()
+	*/
+	while(1){
+		if(pw_char_index > 3)break;									// Exit the loop if the entered_pw array is fully populated
+ 170:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 174:	84 30       	cpi	r24, 0x04	; 4
+ 176:	f8 f4       	brcc	.+62     	; 0x1b6 <main+0x4e>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 178:	2f ef       	ldi	r18, 0xFF	; 255
+ 17a:	83 ed       	ldi	r24, 0xD3	; 211
+ 17c:	90 e3       	ldi	r25, 0x30	; 48
+ 17e:	21 50       	subi	r18, 0x01	; 1
+ 180:	80 40       	sbci	r24, 0x00	; 0
+ 182:	90 40       	sbci	r25, 0x00	; 0
+ 184:	e1 f7       	brne	.-8      	; 0x17e <main+0x16>
+ 186:	00 c0       	rjmp	.+0      	; 0x188 <main+0x20>
+ 188:	00 00       	nop
+		
+		_delay_ms(2000);											// Delay for 2 seconds to allow user sufficient time to press the a PB
+		entered_pw[pw_char_index] = read_entered_pw(pw_char_index); // Store the PB press sequence in the array entered_pw
+ 18a:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 18e:	c8 2f       	mov	r28, r24
+ 190:	d0 e0       	ldi	r29, 0x00	; 0
+ 192:	0e 94 7c 00 	call	0xf8	; 0xf8 <read_entered_pw>
+ 196:	cb 59       	subi	r28, 0x9B	; 155
+ 198:	df 4f       	sbci	r29, 0xFF	; 255
+ 19a:	88 83       	st	Y, r24
+		light_Output_LEDs(entered_pw);								
+ 19c:	85 e6       	ldi	r24, 0x65	; 101
+ 19e:	90 e0       	ldi	r25, 0x00	; 0
+ 1a0:	0e 94 56 00 	call	0xac	; 0xac <light_Output_LEDs>
+		PORTA = pw_char_index;
+ 1a4:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 1a8:	8b bb       	out	0x1b, r24	; 27
+		pw_char_index = pw_char_index + 1;
+ 1aa:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 1ae:	8f 5f       	subi	r24, 0xFF	; 255
+ 1b0:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__data_end>
+			}
+ 1b4:	dd cf       	rjmp	.-70     	; 0x170 <main+0x8>
+	
+	pw_char_index = 0;												// Reset the pw_char_index variable so that it can be used in the following loop
+ 1b6:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <__data_end>
+	/* 
+	Blink the green LED 5 times if the entered password is correct else blink red 5 times
+	
+	*/
+    while(1){
+		if(pw_char_index > 5)break;									// Exit the loop after 5 iterations
+ 1ba:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 1be:	86 30       	cpi	r24, 0x06	; 6
+ 1c0:	40 f5       	brcc	.+80     	; 0x212 <main+0xaa>
+		
+		/* 
+			Switch on the Bi color LED for 0.5 seconds depending on whether the entered password is correct
+		*/
+		if(check_entered_pw(entered_pw, PASSWORD))					// light green
+ 1c2:	60 e6       	ldi	r22, 0x60	; 96
+ 1c4:	70 e0       	ldi	r23, 0x00	; 0
+ 1c6:	85 e6       	ldi	r24, 0x65	; 101
+ 1c8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ca:	0e 94 92 00 	call	0x124	; 0x124 <check_entered_pw>
+ 1ce:	88 23       	and	r24, r24
+ 1d0:	21 f0       	breq	.+8      	; 0x1da <main+0x72>
+			light_BiColor_LED(0); 
+ 1d2:	80 e0       	ldi	r24, 0x00	; 0
+ 1d4:	0e 94 70 00 	call	0xe0	; 0xe0 <light_BiColor_LED>
+ 1d8:	03 c0       	rjmp	.+6      	; 0x1e0 <main+0x78>
+		else light_BiColor_LED(1);									// light red
+ 1da:	81 e0       	ldi	r24, 0x01	; 1
+ 1dc:	0e 94 70 00 	call	0xe0	; 0xe0 <light_BiColor_LED>
+ 1e0:	2f ef       	ldi	r18, 0xFF	; 255
+ 1e2:	84 e3       	ldi	r24, 0x34	; 52
+ 1e4:	9c e0       	ldi	r25, 0x0C	; 12
+ 1e6:	21 50       	subi	r18, 0x01	; 1
+ 1e8:	80 40       	sbci	r24, 0x00	; 0
+ 1ea:	90 40       	sbci	r25, 0x00	; 0
+ 1ec:	e1 f7       	brne	.-8      	; 0x1e6 <main+0x7e>
+ 1ee:	00 c0       	rjmp	.+0      	; 0x1f0 <main+0x88>
+ 1f0:	00 00       	nop
+		
+		_delay_ms(500);
+		
+		// Switch off the Bi Color LED for 0.5 sec
+		BILED_PORT = 0x00;	
+ 1f2:	12 ba       	out	0x12, r1	; 18
+ 1f4:	2f ef       	ldi	r18, 0xFF	; 255
+ 1f6:	84 e3       	ldi	r24, 0x34	; 52
+ 1f8:	9c e0       	ldi	r25, 0x0C	; 12
+ 1fa:	21 50       	subi	r18, 0x01	; 1
+ 1fc:	80 40       	sbci	r24, 0x00	; 0
+ 1fe:	90 40       	sbci	r25, 0x00	; 0
+ 200:	e1 f7       	brne	.-8      	; 0x1fa <main+0x92>
+ 202:	00 c0       	rjmp	.+0      	; 0x204 <main+0x9c>
+ 204:	00 00       	nop
+		_delay_ms(500);
+		
+		pw_char_index = pw_char_index + 1;
+ 206:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 20a:	8f 5f       	subi	r24, 0xFF	; 255
+ 20c:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__data_end>
+	}
+ 210:	d4 cf       	rjmp	.-88     	; 0x1ba <main+0x52>
+}
+ 212:	80 e0       	ldi	r24, 0x00	; 0
+ 214:	90 e0       	ldi	r25, 0x00	; 0
+ 216:	df 91       	pop	r29
+ 218:	cf 91       	pop	r28
+ 21a:	08 95       	ret
+
+0000021c <_exit>:
+ 21c:	f8 94       	cli
+
+0000021e <__stop_program>:
+ 21e:	ff cf       	rjmp	.-2      	; 0x21e <__stop_program>
