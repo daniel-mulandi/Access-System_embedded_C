@@ -65,22 +65,27 @@ int main(void)
 					_delay_ms(50); // release delay debouncing
 				}
 			}
+
 		}
 	}
 	void success(void){
-		PORTD |=(1 << PD0);
-		PORTD &= ~(1 << PD1);
-		_delay_ms(500);
-		PORTD &= ~(1 << PD0);
-		_delay_ms(500);
+		for(int i = 0; i < 4; i++){
+			PORTD |=(1 << PD0);
+			PORTD &= ~(1 << PD1);
+			_delay_ms(500);
+			PORTD &= ~(1 << PD0);
+			_delay_ms(500);
+		}
 	}
 	
 	void fail(void){
-		PORTD |=(1 << PD1);
-		PORTD &= ~(1 << PD0);
-		_delay_ms(500);
-		PORTD &= ~(1 << PD1);
-		_delay_ms(500);
+		for(int i = 0; i < 4; i++){
+			PORTD |=(1 << PD1);
+			PORTD &= ~(1 << PD0);
+			_delay_ms(500);
+			PORTD &= ~(1 << PD1);
+			_delay_ms(500);
+		}
 	}
 }
 
